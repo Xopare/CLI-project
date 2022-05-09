@@ -5,6 +5,7 @@ import wikipediasearch
 import os
 import cmdos 
 
+IsUserLogged = False
 GuionConsola = '/Term: '
 GuionUsuario = '/User: '
 errores= 0
@@ -36,6 +37,11 @@ def kill():
 def login1():
     if login.registered_user == True:
         login.login()
+        global IsUserLogged
+        IsUserLogged = True
+        global GuionUsuario
+        GuionUsuario=f'/{login.Username}: '
+        print(f'has entrado exitosamente {GuionUsuario}')
     else:
         register.register()
 
@@ -63,15 +69,15 @@ if __name__ == '__main__':
              login1()
         elif command == '--register':
             register1()
-        elif command == '--time':
+        elif command == '--time' and IsUserLogged == True:
              printtime()
-        elif command == '--wikipedia':
+        elif command == '--wikipedia' and IsUserLogged == True:
             wikipediasearch1()
         elif command == '--clear':
             clear()
         elif command == '--inicio':
             inicio()
-        elif command == '--cmd':
+        elif command == '--cmd' and IsUserLogged == True:
             cmd()
         else:
             print(GuionConsola,'El comando no existe o no tienes acceso a el')

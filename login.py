@@ -13,6 +13,7 @@ if user_data_list == '':
     pass
 else:
     user_data_list =  user_data_list.splitlines()
+    user_data_list = [eval(i) for i in user_data_list]
     registered_user = True
 
 
@@ -22,12 +23,15 @@ def login():
          try_user = input(f'{GuionConsola}Escriba su usuario: ')
          try_pwd = input(f'{GuionConsola}Escriba su password: ').encode('utf-32')
          try_dict = {'USERNAME': try_user , 'PASSWORD': try_pwd}
-         try_dict =str(try_dict)
          for i in user_data_list:
              if i == try_dict:
                  UserIsLogged = True
+                 global Username
+                 Username = i['USERNAME']
+                 global Password
+                 Password = i['PASSWORD']
              else:
-                 UserIsLogged
+                 UserIsLogged = False
                  print(f'{GuionConsola}Usuario Incorrecto')
 
 if __name__ == '__main__':
