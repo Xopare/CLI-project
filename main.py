@@ -1,43 +1,45 @@
-import sys
+import time
+import register
+import login
+from colorama import Fore
 
-# Cli principal - Aplicacion en plano
+GuionConsola = '/Term: ' + Fore.GREEN
+GuionUsuario = '/User: ' + Fore.BLUE
+errores= 0
+nombre_proyecto = "CLI-Proyecto"
+version = "Alpha 1.0.1"
+hora = time.strftime('%I:%M %p', time.gmtime())
+fecha = time.strftime('del %d/%m/%y', time.gmtime())
+saludo = """
+iniciado con {errores} errores!
+Bienvenido a {nombre_proyecto} version {version}!
+Por Co1dtuna / Stockastic
 
-#Argumentos 
+La hora es {hora}, {fecha}
 
-ArgumentoAyudaPrefijo = 'help'
-ComandoKillProcess = 'end'
-ListaArgumentos = [ArgumentoAyudaPrefijo, ComandoKillProcess]
+inserte un comando para iniciar: 
+""".format(errores=errores,nombre_proyecto=nombre_proyecto,version=version,hora=hora,fecha=fecha)
 
-
-#Tengo que ponerle un buen nombre al proyecto
-NombreProyecto = "CLI-ForLife"
-Version = "Alpha 1.0.0"
-Saludo = """
-Iniciado Correctamente errores 0
-
-Bienvenido a {Nombre_Proyecto} version {Version_}!
-Escribe {Argumento_Ayuda_Prefijo} para obtener ayuda
-""".format(Nombre_Proyecto = NombreProyecto, Version_ = Version,Argumento_Ayuda_Prefijo = ArgumentoAyudaPrefijo)
-MensajeHelp = """
-Este es un proyecto creado para manejar parte mi vida digital y real a traves de una CLI modular con base python.
-
-Los comandos disponibles son:
-
-{Lista_Argumentos}
-
-""".format(Lista_Argumentos =ListaArgumentos )
-
-def main():
-    print(Saludo)
-    while True:
-        UsrInput = input("Inserta un comando: ")
-        if UsrInput == ArgumentoAyudaPrefijo:
-            print(MensajeHelp)
-        elif UsrInput == ComandoKillProcess:
-            print('Chau!')
-            quit()
-        else:
-            print("El Comando llamado no existe")
+def inicio():
+    print(saludo)
+def kill():
+    print('Chau!')
+    quit()
+def login_register():
+    if login.registered_user == True:
+        login.login()
+    else:
+        register.register()
 
 if __name__ == '__main__':
-    main()
+    inicio()
+    while True:
+        command = input(GuionUsuario)
+        if command == '--help':
+            pass
+        elif command == '--kill':
+            kill()
+        elif command == '--login':
+             login_register()
+        else:
+            print(GuionConsola,'El comando no existe')
