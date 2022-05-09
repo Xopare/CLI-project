@@ -4,13 +4,16 @@ import login
 import wikipediasearch
 import os
 import cmdos 
+import Boot
+import ayuda
 
+Boot.Boot()
 IsUserLogged = False
 GuionConsola = '/Term: '
 GuionUsuario = '/User: '
 errores= 0
 nombre_proyecto = "CLI-Proyecto"
-version = "Alpha 1.0.1"
+version = "Alpha 1.0.2"
 hora = time.strftime('%I:%M %p', time.localtime())
 fecha = time.strftime('del %d/%m/%y', time.localtime())
 saludo = """
@@ -57,12 +60,15 @@ def wikipediasearch1():
 def cmd():
     cmdos.wincommandline()
 
+def ayuda1():
+    ayuda.ayuda()
+
 if __name__ == '__main__':
     inicio()
     while True:
-        command = input(GuionUsuario)
+        command = input(GuionUsuario).replace(" ","")
         if command == '--help':
-            pass
+            ayuda1()
         elif command == '--kill':
             kill()
         elif command == '--login':
