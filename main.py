@@ -67,23 +67,27 @@ if __name__ == '__main__':
     inicio()
     while True:
         command = input(GuionUsuario).replace(" ","")
-        if command == '--help':
-            ayuda1()
-        elif command == '--kill':
-            kill()
-        elif command == '--login':
-             login1()
-        elif command == '--register':
-            register1()
-        elif command == '--time' and IsUserLogged == True:
-             printtime()
-        elif command == '--wikipedia' and IsUserLogged == True:
-            wikipediasearch1()
-        elif command == '--clear':
-            clear()
-        elif command == '--inicio':
-            inicio()
-        elif command == '--cmd' and IsUserLogged == True:
-            cmd()
-        else:
-            print(GuionConsola,'El comando no existe o no tienes acceso a el')
+        try:
+            exec(command)
+        except:
+            if command == '--help':
+                ayuda1()
+            elif command == '--kill':
+                kill()
+            elif command == '--login':
+                login1()
+            elif command == '--register':
+                register1()
+            elif command == '--time' and IsUserLogged == True:
+                printtime()
+            elif command == '--wikipedia' and IsUserLogged == True:
+                wikipediasearch1()
+            elif command == '--clear':
+                clear()
+            elif command == '--inicio':
+                inicio()
+            elif command == '--cmd' and IsUserLogged == True:
+                cmd()
+            else:
+                print(GuionConsola,'El comando no existe o no tienes acceso a el')
+         
