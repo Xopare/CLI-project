@@ -1,6 +1,6 @@
 from pip import main
 
-file = open('usr_data.dat',"r+")
+file = open('usr_data.dat',"a")
 
 GuionConsola = '/Term: '
 GuionUsuario = '/User: '
