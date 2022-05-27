@@ -6,10 +6,11 @@ import os
 import cmdos 
 import Boot
 import ayuda
+from rich import print as print
 
 Boot.Boot()
 IsUserLogged = False
-GuionConsola = '/Term: '
+GuionConsola = '/term: '
 GuionUsuario = '/User: '
 errores= 0
 nombre_proyecto = "CLI-Proyecto"
