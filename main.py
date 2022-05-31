@@ -10,8 +10,8 @@ import cmdos
 import Boot
 import ayuda
 import Games
+import GUI
 
-Boot.Boot()
 IsUserLogged = UserIsLogged
 errores= 0
 nombre_proyecto = "CLI-Proyecto"
@@ -33,6 +33,7 @@ def clear():
     os.system('cls')
 
 def inicio():
+    Boot.Boot()
     print(saludo)
 
 def kill():
@@ -69,6 +70,9 @@ def ayuda1():
 def Games1():
     Games.Games()
 
+def GUI1():
+    GUI.GUI()
+
 if __name__ == '__main__':
     inicio()
     while True:
@@ -90,7 +94,11 @@ if __name__ == '__main__':
             elif (command[0] == '--time' or command[0] == '-t') and IsUserLogged == True:
                 printtime()
             elif (command[0] == '--wikipedia' or command[0] == '-w') and IsUserLogged == True:
-                wikipediasearch1(command[1])
+                try:
+                    wikipediasearch1(command[1])
+                except IndexError:
+                    wikipediasearch1()
+
             elif command[0] == '--clear' or command[0] == '-cl':
                 clear()
             elif command[0] == '--inicio' or command[0] == '-i':
@@ -99,6 +107,8 @@ if __name__ == '__main__':
                 cmd()
             elif (command[0] == '--games' or command[0] == '-g') and IsUserLogged == True:
                 Games1()
+            elif command[0] == '--gui' and IsUserLogged == True:
+                GUI1()
             else:
                 print(time.strftime('[%I:%M:%S]'),GuionConsola,'El comando no existe o no tienes acceso a el')
                 
