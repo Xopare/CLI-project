@@ -1,6 +1,10 @@
 import time
+import winsound
+from UserTerm import GuionConsola
+from UserTerm import GuionUsuario
 
 def Boot():
+    winsound.Beep(650,700)
     print("""
                       __gggrgM**M#mggg__
                  __wgNN@"B*P""mp""@d#"@N#Nw__

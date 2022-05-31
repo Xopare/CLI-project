@@ -1,9 +1,10 @@
-
-funcdict = {'--help':'Comando de ayuda','--kill':'Terminar la ejecucion del programa','--login':'Entrar al sistema','--register':'Registrarse en el sistema','--time':'Muestra la hora y la fecha','--wikipedia':'Busca un articulo en wikipedia','--inicio':'Muestra el inicio del sistema','--cmd':'Abre una instancia de cmd'}
+from UserTerm import GuionConsola
+from UserTerm import GuionUsuario
+from UserTerm import Functions
 
 def ayuda():
-    for key in funcdict:
-        print(key," : ",funcdict[key])
+    for value , key in Functions.items():
+        print(f"{key[0]} o {key[1]} // para {value}")
 
 if __name__ == '__main__':
     ayuda()

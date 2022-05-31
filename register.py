@@ -1,9 +1,9 @@
-from pip import main
+from UserTerm import GuionConsola
+from UserTerm import GuionUsuario
+from UserTerm import DefaultDataFilename
 
-file = open('usr_data.dat',"a")
+file = open(DefaultDataFilename,"a")
 
-GuionConsola = '/Term: '
-GuionUsuario = '/User: '
 
 def register():
     username = input(f'{GuionConsola}Antes de empezar a  usar la consola primero defina un nombre de usuario: ')

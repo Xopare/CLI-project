@@ -1,8 +1,6 @@
-
-from urllib.parse import uses_relative
-
-GuionConsola = '/Term: '
-GuionUsuario = '/User: '
+from UserTerm import GuionConsola
+from UserTerm import GuionUsuario
+from UserTerm import UserIsLogged
 
 file = open('usr_data.dat','r+')
 
@@ -20,8 +18,8 @@ else:
 def login(): 
      UserIsLogged = False
      while UserIsLogged == False:
-         try_user = input(f'{GuionConsola}Escriba su usuario: ')
-         try_pwd = input(f'{GuionConsola}Escriba su password: ').encode('utf-32')
+         try_user = input(f'{GuionConsola} Escriba su usuario: ')
+         try_pwd = input(f'{GuionConsola} Escriba su contraseña: ').encode('utf-32')
          try_dict = {'USERNAME': try_user , 'PASSWORD': try_pwd}
          for i in user_data_list:
              if i == try_dict:
@@ -32,7 +30,7 @@ def login():
                  Password = i['PASSWORD']
              else:
                  UserIsLogged = False
-                 print(f'{GuionConsola}Usuario Incorrecto')
+                 print(f'{GuionConsola} Usuario o Constraseña Incorrectos')
 
 if __name__ == '__main__':
     login()

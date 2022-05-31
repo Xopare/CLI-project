@@ -1,4 +1,4 @@
 @Echo off
+COLOR 0A
 CLS
-color 1F
 py main.py
